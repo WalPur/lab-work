@@ -14,3 +14,7 @@ class Lot(models.Model):
     date_edited = models.DateTimeField(
         "Дата последнего редактирования", auto_now=True, null=True
     )
+    is_active = models.BooleanField("Показывать ли объявление", default=True)
+
+    def __str__(self) -> str:
+        return "Объявление {} пользователя {}".format(self.name, self.author.email)

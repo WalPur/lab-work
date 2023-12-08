@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from doska.models import Lot
+
+
+@admin.register(Lot)
+class LogAdmin(admin.ModelAdmin):
+    list_display = ["name", "author"]

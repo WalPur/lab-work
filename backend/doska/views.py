@@ -21,5 +21,5 @@ class LotViewset(
     DestroyModelMixin,
 ):
     serializer_class = LotSerializer
-    queryset = Lot.objects.all()
+    queryset = Lot.objects.filter(is_active=True)
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
