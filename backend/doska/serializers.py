@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.doska.models import Lot
+from doska.models import Lot
 
 
 class LotSerializer(serializers.ModelSerializer):

@@ -7,9 +7,9 @@ from rest_framework.mixins import (
     DestroyModelMixin,
 )
 from rest_framework import permissions
-from backend.doska.models import Lot
+from doska.models import Lot
 
-from backend.doska.serializers import LotSerializer
+from doska.serializers import LotSerializer
 
 
 class LotViewset(
