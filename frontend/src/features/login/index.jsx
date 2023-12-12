@@ -4,15 +4,29 @@ import LoginButtonEntity from "../../entities/login";
 import PasswordInputEntity from "../../entities/password_input";
 import EmailInputEntity from "../../entities/email_input";
 import SigninButtonEntity from "../../entities/signin";
+import { loginUser, registerUser } from "./api";
 
-function LoginFeature() {
-  function message() {
-    console.log(formData.email);
-    console.log(formData.password);
-  }
+function LoginFeature({ toggleModal }) {
+  const handleLogin = async () => {
+    try {
+      const loginData = await loginUser(formData);
+      toggleModal();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRegister = async () => {
+    try {
+      const registerData = await registerUser(formData);
+      handleLogin();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
   const handleInputChange = (e) => {
@@ -23,14 +37,17 @@ function LoginFeature() {
   };
   return (
     <div className="bg-white p-6 rounded shadow-lg flex flex-col fixed z-20">
-      <EmailInputEntity onchange={handleInputChange} value={formData.email} />
+      <EmailInputEntity
+        onchange={handleInputChange}
+        value={formData.username}
+      />
       <PasswordInputEntity
         onchange={handleInputChange}
         value={formData.password}
       />
       <div className="flex flex-col gap-4">
-        <LoginButtonEntity onclick={message} />
-        <SigninButtonEntity onclick={message} />
+        <LoginButtonEntity onclick={handleLogin} />
+        <SigninButtonEntity onclick={handleRegister} />
       </div>
     </div>
   );

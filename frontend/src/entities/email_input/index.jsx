@@ -5,7 +5,7 @@ function EmailInputEntity({ onchange, value }) {
     <InputShared
       onchange={onchange}
       value={value}
-      params={{ type: "text", name: "email", placeholder: "email" }}
+      params={{ type: "text", name: "username", placeholder: "email" }}
     />
   );
 }

@@ -8,7 +8,7 @@ function AuthModalWidget({ showModal, toggleModal }) {
           className="fixed inset-0 flex z-20 bg-gray-800 bg-opacity-75"
           onClick={toggleModal}
         ></div>
-        <LoginFeature />
+        <LoginFeature toggleModal={toggleModal} />
       </div>
     )
   );
