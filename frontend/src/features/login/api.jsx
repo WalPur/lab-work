@@ -10,7 +10,8 @@ export const loginUser = async (userData) => {
       body: JSON.stringify(userData),
     });
     const data = await response.json();
-    return data;
+    localStorage.setItem("token", data["token"]);
+    location.reload();
   } catch (error) {
     throw new Error("Ошибка авторизации: " + error.message);
   }
