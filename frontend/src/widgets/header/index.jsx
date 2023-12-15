@@ -3,9 +3,12 @@ import LogoShared from "../../shared/logo";
 import AuthModalWidget from "../auth_modal";
 import LoginButtonEntity from "../../entities/login";
 import LogoutFeature from "../../features/logout";
+import SubmitEntity from "../../entities/submit_button";
+import LotDataModal from "../lot_modal";
 
 function HeaderWidget() {
-  const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showLotModal, setShowLotModal] = useState(false);
   const [token, setToken] = useState(null);
 
   useEffect(() => {
@@ -15,14 +18,30 @@ function HeaderWidget() {
       setToken(storedToken);
     }
   }, []);
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  const toggleLoginModal = () => {
+    setShowLoginModal(!showLoginModal);
+  };
+  const toggleLotModal = () => {
+    setShowLotModal(!showLotModal);
   };
   return (
-    <div>
-      <LogoShared />
-      <AuthModalWidget showModal={showModal} toggleModal={toggleModal} />
-      {token ? <LogoutFeature /> : <LoginButtonEntity onclick={toggleModal} />}
+    <div className="border-b border-gray-300">
+      <div className="container mx-auto my-5 flex gap-5 items-center">
+        <LogoShared />
+        <AuthModalWidget
+          showModal={showLoginModal}
+          toggleModal={setShowLoginModal}
+        />
+        <LotDataModal showModal={showLotModal} toggleModal={setShowLotModal} />
+        {token ? (
+          <div className="flex gap-5">
+            <SubmitEntity onclick={toggleLotModal} />
+            <LogoutFeature />
+          </div>
+        ) : (
+          <LoginButtonEntity onclick={toggleLoginModal} />
+        )}
+      </div>
     </div>
   );
 }

@@ -3,11 +3,10 @@ import HeaderWidget from "./widgets/header";
 
 function App() {
   return (
-    <>
+    <div>
       <HeaderWidget />
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <MainPage />
-    </>
+    </div>
   );
 }
 

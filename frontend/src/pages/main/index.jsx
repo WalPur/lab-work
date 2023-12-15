@@ -1,8 +1,10 @@
+import LotsWidget from "../../widgets/lots";
+
 function MainPage() {
   return (
-    <>
-      <h2>Главная страница</h2>
-    </>
+    <div className="container mx-auto my-5">
+      <LotsWidget />
+    </div>
   );
 }
 

@@ -5,7 +5,7 @@ function TextInputEntity({ onchange, value, name }) {
     <InputShared
       onchange={onchange}
       value={value}
-      params={{ type: "text", name: { name }, placeholder: { name } }}
+      params={{ type: "text", name: name, placeholder: name }}
     />
   );
 }
