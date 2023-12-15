@@ -4,7 +4,10 @@ from doska.models import Category, Lot
 
 @admin.register(Lot)
 class LogAdmin(admin.ModelAdmin):
-    list_display = ["name", "author"]
+    list_display = [
+        "name",
+        "author",
+    ]
 
 
 @admin.register(Category)

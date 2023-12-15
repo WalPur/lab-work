@@ -11,6 +11,7 @@ export const createLot = async (lotData) => {
       },
       body: JSON.stringify(lotData),
     });
+    location.reload();
     return response;
   } catch (error) {
     throw new Error("Ошибка при создании: " + error.message);

@@ -1,15 +1,14 @@
-from rest_framework.viewsets import GenericViewSet
+from doska.models import Lot
+from doska.serializers import LotSerializer
+from rest_framework import permissions
 from rest_framework.mixins import (
     CreateModelMixin,
-    RetrieveModelMixin,
-    ListModelMixin,
-    UpdateModelMixin,
     DestroyModelMixin,
+    ListModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
 )
-from rest_framework import permissions
-from doska.models import Lot
-
-from doska.serializers import LotSerializer
+from rest_framework.viewsets import GenericViewSet
 
 
 class LotViewset(
@@ -21,5 +20,5 @@ class LotViewset(
     DestroyModelMixin,
 ):
     serializer_class = LotSerializer
-    queryset = Lot.objects.filter(is_active=True)
+    queryset = Lot.objects.filter(is_active=True).order_by("-date_added")
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

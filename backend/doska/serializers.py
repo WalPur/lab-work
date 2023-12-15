@@ -25,6 +25,7 @@ class LotSerializer(serializers.ModelSerializer):
             "is_active",
             "categories",
             "categories_display",
+            "image",
         ]
 
     def get_categories_display(self, instance):
